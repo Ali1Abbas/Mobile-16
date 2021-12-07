@@ -21,13 +21,17 @@ class NoteScreen extends StatelessWidget {
                 Icons.check_circle,
                 size: 30,
               ),
-              onPressed: () {}),
+              onPressed: () {
+                Navigator.pop(context, note);
+              }),
           IconButton(
               icon: Icon(
                 Icons.cancel_sharp,
                 size: 30,
               ),
-              onPressed: () {}),
+              onPressed: () {
+                Navigator.pop(context, null);
+              }),
         ],
       ),
       body: Container(
@@ -40,7 +44,9 @@ class NoteScreen extends StatelessWidget {
               decoration: InputDecoration(
                 hintText: 'Type the title here',
               ),
-              onChanged: (value) {},
+              onChanged: (value) {
+                note.title = value;
+              },
             ),
             SizedBox(
               height: 5,
@@ -54,7 +60,9 @@ class NoteScreen extends StatelessWidget {
                   decoration: InputDecoration(
                     hintText: 'Type the description',
                   ),
-                  onChanged: (value) {}),
+                  onChanged: (value) {
+                    note.content = value;
+                  }),
             ),
           ],
         ),

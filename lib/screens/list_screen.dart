@@ -74,7 +74,7 @@ class _ListScreenState extends State<ListScreen> {
                         NoteScreen(Note.copy(widget.note[index]))));
             if (note != null) {
               setState(() {
-                note[index].update(note);
+                widget.note[index].update(note);
               });
             }
             if (note == null) {
