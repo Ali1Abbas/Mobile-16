@@ -8,6 +8,8 @@ final noteList = <Note>[
   Note("Stateful Widgets",
       "The widgets whose state can be altered once they are built are called stateful Widgets. "),
   Note("Conditional (ternary) operator ",
+      "The conditional (ternary) operator in Dart takes three operands: a condition, first expression (if truthy) and second expression (if falsy)."),
+  Note("Conditional (ternary) operator ",
       "The conditional (ternary) operator in Dart takes three operands: a condition, first expression (if truthy) and second expression (if falsy).")
 ];
 
