@@ -34,7 +34,7 @@ class _ListScreenState extends State<ListScreen> {
         ],
       ),
       body: ListView.separated(
-        itemCount: 4,
+        itemCount: widget.note.length,
         separatorBuilder: (context, index) => Divider(
           color: Colors.blueGrey,
         ),
@@ -53,7 +53,9 @@ class _ListScreenState extends State<ListScreen> {
                     Icons.delete,
                     color: Colors.blue,
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    removetask(index);
+                  },
                 ),
               ],
             ),
@@ -93,9 +95,15 @@ class _ListScreenState extends State<ListScreen> {
       text,
       style: TextStyle(fontSize: 30),
       maxLines: lines,
-      // overflow properties is used to show 3 dot in text widget
+      // overflow properties is used to show 1 dot in text widget
       // so that user can understand there are few more line to read.
       overflow: isReadmore ? TextOverflow.visible : TextOverflow.visible,
     );
+  }
+
+  void removetask(int index) {
+    setState(() {
+      widget.note.removeAt(index);
+    });
   }
 }
