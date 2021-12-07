@@ -3,11 +3,13 @@
 //? You can refactor the code if needed
 
 import 'package:flutter/material.dart';
+import 'package:midterm/models/mock_data.dart';
 
 import '../models/note.dart';
 
 class ListScreen extends StatefulWidget {
   final List<Note> note;
+
   ListScreen(this.note);
   @override
   _ListScreenState createState() => _ListScreenState();
@@ -15,6 +17,7 @@ class ListScreen extends StatefulWidget {
 
 class _ListScreenState extends State<ListScreen> {
   bool isReadmore = false;
+  Note m;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,7 +57,7 @@ class _ListScreenState extends State<ListScreen> {
                     color: Colors.blue,
                   ),
                   onPressed: () {
-                    removetask(index);
+                    removenote(index);
                   },
                 ),
               ],
@@ -80,7 +83,12 @@ class _ListScreenState extends State<ListScreen> {
           FloatingActionButton(
             child: Icon(Icons.add),
             tooltip: 'Add a new note',
-            onPressed: () {},
+            onPressed: () {
+              // addnote(m);
+              setState(() {
+                widget.note.add(m);
+              });
+            },
           ),
         ],
       ),
@@ -101,7 +109,7 @@ class _ListScreenState extends State<ListScreen> {
     );
   }
 
-  void removetask(int index) {
+  void removenote(int index) {
     setState(() {
       widget.note.removeAt(index);
     });
