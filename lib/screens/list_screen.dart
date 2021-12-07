@@ -4,6 +4,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:midterm/models/mock_data.dart';
+import 'package:midterm/screens/note_screen.dart';
 
 import '../models/note.dart';
 
@@ -65,7 +66,21 @@ class _ListScreenState extends State<ListScreen> {
           ),
           title: Text(widget.note[index].title),
           subtitle: buildText(widget.note[index].content),
-          onTap: () {},
+          onTap: () async {
+            final note = await Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) =>
+                        NoteScreen(Note.copy(widget.note[index]))));
+            if (note != null) {
+              setState(() {
+                note[index].update(note);
+              });
+            }
+            if (note == null) {
+              setState(() {});
+            }
+          },
           onLongPress: () {},
         ),
       ),

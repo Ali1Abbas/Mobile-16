@@ -7,6 +7,8 @@ import 'package:flutter/material.dart';
 import '../models/note.dart';
 
 class NoteScreen extends StatelessWidget {
+  Note note;
+  NoteScreen(this.note);
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
