@@ -14,6 +14,7 @@ class ListScreen extends StatefulWidget {
 }
 
 class _ListScreenState extends State<ListScreen> {
+  bool isReadmore = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,7 +59,7 @@ class _ListScreenState extends State<ListScreen> {
             ),
           ),
           title: Text(widget.note[index].title),
-          subtitle: Text(widget.note[index].content),
+          subtitle: buildText(widget.note[index].content),
           onTap: () {},
           onLongPress: () {},
         ),
@@ -69,7 +70,11 @@ class _ListScreenState extends State<ListScreen> {
           FloatingActionButton(
               child: Icon(Icons.unfold_less),
               tooltip: 'Show less. Hide notes content',
-              onPressed: () {}),
+              onPressed: () {
+                setState(() {
+                  isReadmore = !isReadmore;
+                });
+              }),
           FloatingActionButton(
             child: Icon(Icons.add),
             tooltip: 'Add a new note',
@@ -77,6 +82,20 @@ class _ListScreenState extends State<ListScreen> {
           ),
         ],
       ),
+    );
+  }
+
+  Widget buildText(String text) {
+    // if read more is false then show only 3 lines from text
+    // else show full text
+    final lines = isReadmore ? null : 1;
+    return Text(
+      text,
+      style: TextStyle(fontSize: 30),
+      maxLines: lines,
+      // overflow properties is used to show 3 dot in text widget
+      // so that user can understand there are few more line to read.
+      overflow: isReadmore ? TextOverflow.visible : TextOverflow.visible,
     );
   }
 }
