@@ -6,7 +6,7 @@ import 'screens/list_screen.dart';
 void main() {
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
-    title: 'MAP Mid Term Test',
+    title: 'MAP Mid Term Test for asiapay',
     theme: ThemeData(
       primarySwatch: Colors.blue,
     ),
